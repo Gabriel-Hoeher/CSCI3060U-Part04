@@ -1,5 +1,3 @@
-package BankSystem;
-
 public class StudentAccount extends BankAccount{
    
     public double studentCost() {
@@ -8,7 +6,7 @@ public class StudentAccount extends BankAccount{
 
         //if this acount had a transaction
         if (totalNumOfTransaction > 0) {
-            Transaction transaction = new Transaction();
+            Transaction transaction = new Transaction();                    /*Error until Transaction is added*/
 
             for (int i=0; i<totalNumOfTransaction; i++) total += amount;    //calculate total to withdraw
 

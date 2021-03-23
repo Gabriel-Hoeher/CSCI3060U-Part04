@@ -1,5 +1,3 @@
-package BankSystem;
-
 public class BankAccount {
     protected String accountName;
     protected long accountNumber;
