@@ -1,4 +1,5 @@
 public class RegularAccount extends BankAccount {
+
     public double regularCost() {
         final float amount = 0.1f;  
         double total = 0f;

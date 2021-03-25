@@ -6,34 +6,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Read {
-  public String readFile(String masterBankAccounts, String transactionFile){
-    
-    HashMap<String,BankAccount> accountList = new ArrayList<String,BankAccount>();
-    ArrayList<Transaction> transactionList = new ArrayList<Transaction>();
-    
-    try {
-        BufferedReader bufReader = new BufferedReader(masterBankAccounts);
-        String line = bufReader.readLine();
-    
-        while (line != null) {
-            String line = fileReader.nextLine();
-            
-            // split the lines with substring and can set the variables for BankAccount
-            BankAccount bankaccount = new BankAccount(line);
+  public BankAccount[] readMaster(String masterBankAccounts) {
 
-            if(bankaccount.accountNumber != null){
-              // insert into hashmap with account number as the key
-              accountList.put(bankaccount.accountNumber, bankaccount);
-            }
-            line = bufReader.readLine();
-    
-        }
-        fileReader.close();
-    }
-    catch (Exception error) {
-        // error 
-    }
-    
+      HashMap<String, BankAccount> accountList = new ArrayList<String, BankAccount>();
+      ArrayList<Transaction> transactionList = new ArrayList<Transaction>();
+
+      try {
+          BufferedReader bufReader = new BufferedReader(masterBankAccounts);
+          String line = bufReader.readLine();
+
+          while (line != null) {
+              String line = fileReader.nextLine();
+
+              // split the lines with substring and can set the variables for BankAccount
+              BankAccount bankaccount = new BankAccount(line);
+
+              if (bankaccount.accountNumber != null) {
+                  // insert into hashmap with account number as the key
+                  accountList.put(bankaccount.accountNumber, bankaccount);
+              }
+              line = bufReader.readLine();
+
+          }
+          fileReader.close();
+      } catch (Exception error) {
+          // error 
+      }
+      BankAccount[] accounts = new BankAccount[accountList.size()];
+      for (int i = 0; i<accountList.size();i++) {
+          accounts[i] = accountlist.get(i)[1];
+      }
+      return accounts;
+  }
+  
+  public String readFile(BankAccount[] accounts, String transactionFile) {
     try {
         BufferedReader bufReader = new BufferedReader(transactionFile);
         String line = bufReader.readLine();
@@ -55,6 +61,4 @@ public class Read {
     catch (Exception error) {
         // error
     }
-    
-  }
 }
