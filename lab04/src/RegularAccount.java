@@ -1,7 +1,15 @@
 import java.util.HashMap;
 
+/*
+ * This is a subclass of Bank Account that will create a
+ * transaction that will withdraw 0.1 dollars for every
+ * transaction an account has made that day
+ * */
 public class RegularAccount extends BankAccount {
-
+    /*
+     * This is the method that will preform the transaction
+     * returning the total amount
+     * */
     public double regularCost() {
         final float amount = 0.1f;  
         float total = 0f;
