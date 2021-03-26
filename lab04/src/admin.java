@@ -3,7 +3,9 @@ import java.io.IOException;
 
 public class Admin extends Transaction{
   void create(){
+
     currentAccount.isActive = true;
+    currentAccount.totalNumOfTransaction++;
   }
   
   void delete(){
@@ -14,7 +16,7 @@ public class Admin extends Transaction{
   
   void disable(){
     currentAccount.isActive = false;
-
+    currentAccount.totalNumOfTransaction++;
   }
   
   void changePlan(){
