@@ -3,4 +3,5 @@ public class BankAccount {
     protected long accountNumber;
     protected boolean isActive;
     protected int totalNumOfTransaction;
+    protected float balance;
 }

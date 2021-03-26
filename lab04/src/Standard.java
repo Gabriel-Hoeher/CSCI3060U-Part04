@@ -1,21 +1,24 @@
 public class Standard extends Transaction{
-  void withdraw(){
-    // Take out some money
+  void withdraw(float value){
+    currentAccount.balance = currentAccount.balance - value;
 
   }
   
-  void transfer(){
+  void transfer(float value, BankAccount transfer){
     // move money from one to another
+    currentAccount.balance = currentAccount.balance - value;
+    transfer.balance = transfer.balance + value;
+  }
+  
+  void paybill(float value){
+    // Should this work the same as withdraw?
+    currentAccount.balance = currentAccount.balance - value;
 
   }
   
-  void paybill(){
-    // Would this work the same as withdraw?
-
-  }
-  
-  void deposit(){
+  void deposit(float value){
     // Add money
+    currentAccount.balance = currentAccount.balance + value;
   }
   
 }
