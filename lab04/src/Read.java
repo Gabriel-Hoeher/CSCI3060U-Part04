@@ -5,6 +5,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+* Reads in the Master Bank Accounts File and the Merged Bank Account Transaction File
+* Stores the accounts as a HashMap with the accountNumber being the key
+* Stores the transactions in an array list
+*/
 public class Read {
   public BankAccount[] readMaster(String masterBankAccounts) {
 
@@ -49,7 +54,7 @@ public class Read {
             Transaction currentTransaction = new Transaction();
             
             // append to transactionlist
-            // if transactionNum is "00" break
+            // run as long as nameType != "00"
             transaction.initialize(currentTransaction, accountList);
             if (transaction.nameType != "00") {
               transactionList.add(currentTransaction);

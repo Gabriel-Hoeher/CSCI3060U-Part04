@@ -11,6 +11,7 @@ public class Transaction {
     HashMap<String, BankAccount> initialize(String currentTransaction, HashMap<String,BankAccount> accountList) {
         
         // CC_AAAAAAAAAAAAAAAAAAAA_NNNNN_PPPPPPPP_MM
+        // using subString to split the line into its corresponding variables
         nameType = currentTransaction.substring(0, 2);
         String accountName = currentTransaction.substring(3,23);
         accountNumber = Long.parseLong(currentTransaction.substring(24, 29));
@@ -24,9 +25,9 @@ public class Transaction {
             // currentAccount = new BankAccount(x,y)
             accountList.put(accountName, currentAccount);
         }
-
-        currentAccount = accountList.get(accountNumber); //Getting the accountNumber of the current account
-
+        
+        //Getting the accountNumber of the current account
+        currentAccount = accountList.get(accountNumber); 
 
         return accountList;
     }
