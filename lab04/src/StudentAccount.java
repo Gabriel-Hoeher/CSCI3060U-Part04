@@ -6,6 +6,10 @@ import java.util.HashMap;
 * transaction an account has made that day
 * */
 public class StudentAccount extends BankAccount{
+    StudentAccount(String accountName, long accountNumber, float currentBalance) {
+        super(accountName, accountNumber, currentBalance);
+    }
+
     /*
     * This is the method that will preform the transaction
     * returning the total amount
@@ -14,10 +18,10 @@ public class StudentAccount extends BankAccount{
         final float amount = 0.05f;  
         float total = 0f;
 
-        //if this acount had a transaction
+        //if this account had a transaction
         if (totalNumOfTransaction > 0) {
             Standard transaction = new Standard();
-            HashMap<String, BankAccount> acc = new HashMap<>();
+            HashMap<String, BankAccount> acc = new HashMap<String, BankAccount>();
 
             //initialize transaction
             acc.put(accountName, this);

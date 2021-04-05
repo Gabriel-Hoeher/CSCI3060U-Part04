@@ -17,4 +17,12 @@ public class BankAccount {
         currentBalance = Float.parseFloat(accountString.substring(29,36));
         totalNumOfTransaction = Integer.parseInt(accountString.substring(28,41));
     }
+
+    BankAccount(String accountName, long accountNumber, float currentBalance) {
+        this.accountName = accountName;
+        this.accountNumber= accountNumber;
+        this.currentBalance = currentBalance;
+        isActive = true;
+        totalNumOfTransaction = 0;
+    }
 }
