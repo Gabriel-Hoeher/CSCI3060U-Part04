@@ -11,59 +11,67 @@ import java.util.List;
 * Stores the transactions in an array list
 */
 public class Read {
-  public BankAccount[] readMaster(String masterBankAccounts) {
+    //Stores tge account number and actual value of the account
+    private class AccountPair
+    {
+        String accountNumber;
+        BankAccount account;
+        public AccountPair(String accountNumber, BankAccount account)
+        {
+            this.accountNumber = accountNumber;
+            this.account = account;
+        }
+    }
 
-      HashMap<String, BankAccount> accountList = new ArrayList<String, BankAccount>();
-      ArrayList<Transaction> transactionList = new ArrayList<Transaction>();
+    public BankAccount[] readMaster(String masterBankAccounts) {
+
+      ArrayList<AccountPair> accountList = new ArrayList<AccountPair>();
+
 
       try {
-          BufferedReader bufReader = new BufferedReader(masterBankAccounts);
-          String line = bufReader.readLine();
+          BufferedReader bufReader = new BufferedReader(new FileReader(masterBankAccounts));
+          String line;
 
-          while (line != null) {
-              String line = fileReader.nextLine();
+          while ((line = bufReader.readLine()) != null) {
 
               // split the lines with substring and can set the variables for BankAccount
               BankAccount bankaccount = new BankAccount(line);
 
-              if (bankaccount.accountNumber != null) {
-                  // insert into hashmap with account number as the key
-                  accountList.put(bankaccount.accountNumber, bankaccount);
-              }
+              // insert into hashmap with account number as the key
+                  accountList.add(new AccountPair(""+bankaccount.accountNumber, bankaccount));
+
               line = bufReader.readLine();
 
           }
-          fileReader.close();
+          bufReader.close();
       } catch (Exception error) {
           // error 
       }
       BankAccount[] accounts = new BankAccount[accountList.size()];
       for (int i = 0; i<accountList.size();i++) {
-          accounts[i] = accountlist.get(i)[1];
+          accounts[i] = accountList.get(i).account;
       }
       return accounts;
   }
   
-  public String readFile(BankAccount[] accounts, String transactionFile) {
-    try {
-        BufferedReader bufReader = new BufferedReader(transactionFile);
-        String line = bufReader.readLine();
-        
-        while (line != null) {
-            String line = fileReader.nextLine();
-            Transaction currentTransaction = new Transaction();
-            
-            // append to transactionlist
-            // run as long as nameType != "00"
-            transaction.initialize(currentTransaction, accountList);
-            if (transaction.nameType != "00") {
-              transactionList.add(currentTransaction);
-            }
-            line = bufReader.readLine();
-        }
-        fileReader.close();
-    }
-    catch (Exception error) {
-        // error
-    }
+  public void readFile(BankAccount[] accounts, String transactionFile) {
+      ArrayList<Transaction> transactionList = new ArrayList<Transaction>();
+      try {
+          BufferedReader bufReader = new BufferedReader(new FileReader(transactionFile));
+          String line;
+
+          while ((line = bufReader.readLine()) != null) {
+              Transaction currentTransaction = new Transaction();
+
+              // append to transactionlist
+              // run as long as nameType != "00"
+              if (currentTransaction.nameType != "00") {
+                  transactionList.add(currentTransaction);
+              }
+          }
+          bufReader.close();
+      } catch (Exception error) {
+          // error
+      }
+  }
 }
