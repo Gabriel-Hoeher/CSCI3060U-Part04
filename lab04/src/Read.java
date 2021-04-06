@@ -23,10 +23,10 @@ public class Read {
         }
     }
 
-    public BankAccount[] readMaster(String masterBankAccounts) {
+    public String[] readMaster(String masterBankAccounts) {
 
       ArrayList<AccountPair> accountList = new ArrayList<AccountPair>();
-
+      ArrayList<String> accountStringList = new ArrayList<String>();
 
       try {
           BufferedReader bufReader = new BufferedReader(new FileReader(masterBankAccounts));
@@ -37,21 +37,27 @@ public class Read {
               // split the lines with substring and can set the variables for BankAccount
               BankAccount bankaccount = new BankAccount(line);
 
-              // insert into hashmap with account number as the key
-                  accountList.add(new AccountPair(""+bankaccount.accountNumber, bankaccount));
-
-              line = bufReader.readLine();
+              // insert into hashmap with account number as the key (no longer necessary)
+              accountList.add(new AccountPair(""+bankaccount.accountNumber, bankaccount));
+              accountStringList.add(line);
 
           }
           bufReader.close();
       } catch (Exception error) {
           // error 
       }
+      //Translates the Account Pairs to a list of accounts (no longer necessary)
       BankAccount[] accounts = new BankAccount[accountList.size()];
       for (int i = 0; i<accountList.size();i++) {
           accounts[i] = accountList.get(i).account;
       }
-      return accounts;
+
+      //Translates the list of strings into an array of strings to make testing easier
+      String[] returnArray = new String[accountStringList.size()];
+      for (int i = 0; i<accountStringList.size();i++) {
+          returnArray[i] = accountStringList.get(i);
+      }
+      return returnArray;
   }
   
   public void readFile(BankAccount[] accounts, String transactionFile) {
