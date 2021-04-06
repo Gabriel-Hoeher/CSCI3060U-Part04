@@ -8,15 +8,15 @@ class ReadTest {
   
   // Tests if loop executes body 0 times for readMaster
   @Test
-  void readMasterLoop_0(){
+  void ReadMasterLoop1(){
     String[] accounts;
     Read read = new Read();
     // empty txt file
     accounts = read.readMaster("empty.txt");
-    Assertions.assertEquals(null, accounts);
+    Assertions.assertEquals(new String[]{}, accounts);
   }
   
-  void readMasterLoop_1(){
+  void ReadMasterLoop2(){
     String[] accounts;
     Read read = new Read();
     // empty txt file
@@ -26,7 +26,7 @@ class ReadTest {
   
   // Test if loop executes body multiple times for readMaster
   @Test
-  void readMasterLoop_M(){
+  void ReadMasterLoop3(){
     String[] accounts;
     Read read = new Read();
     // Master txt file
@@ -40,7 +40,7 @@ class ReadTest {
   // Test if bank account number is null
   // bank account number for 2nd line is null
   @Test
-  void readMasterDecision_1(){
+  void ReadMasterDecision1(){
     String[] accounts;
     Read read = new Read();
     accounts = read.readMaster("test_skip_2.txt");
@@ -50,7 +50,7 @@ class ReadTest {
   
   // Test if bank account number is not null
   @Test
-  void readMasterDecision_2(){
+  void ReadMasterDecision2(){
     String[] accounts;
     Read read = new Read();
     // Master txt file
@@ -63,8 +63,8 @@ class ReadTest {
   // putting in nonexistent file so readMaster can't open it
   // null because catch doesnt do anything right now
   @Test
-  void readMasterDecision_3(){
+  void ReadMasterDecision3(){
     Read read = new Read();
-    Assertions.assertEquals(null, read.readMaster("nonExistent.txt"));
+    Assertions.assertEquals(new String[]{}, read.readMaster("nonExistent.txt"));
   }
 }
