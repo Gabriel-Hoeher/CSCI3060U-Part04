@@ -29,6 +29,7 @@ public:
         string getOwner();
         int getAccountNum();
         float getBalance();
+        bool getStatus();
 };
 
 #endif

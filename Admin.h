@@ -11,8 +11,9 @@
 
 class Admin : public Standard {
 public:
-        //Constructor
+        //Constructors
         Admin();
+        Admin(int ac, char** av);
         //Runs an admin session
         void runSession();
         //Withdraw money from an account

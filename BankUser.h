@@ -18,9 +18,11 @@ protected:
         Bank bank;
         Account account;
         vector<string> transactions;
+        char** args;
 public:
         //Constructor
         BankUser();
+        BankUser(int ac, char** av);
         //Logs user into an account
         void login();
         //Runs a session

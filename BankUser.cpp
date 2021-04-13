@@ -4,9 +4,16 @@
 
 using namespace std;
 
-//Constructor
+//Constructors
 BankUser :: BankUser() {
     bank = Bank();
+}
+BankUser :: BankUser(int ac, char** av) {
+    bank = Bank();
+    args = new char*[ac];
+    for(int i = 0; i < ac; i++) {
+        args[i] = av[i];
+    }
 }
 
 /**
@@ -16,11 +23,11 @@ BankUser :: BankUser() {
 void BankUser :: login() {
     bool successful = false;
     string name, accountNum;
+    name = args[2];
+    accountNum = args[3];
     while(successful == false) {
         cout << "Name: ";
-        getline(cin,name);
         cout << "Account number: ";
-        getline(cin, accountNum);
 
         //Verify credentials
         if(!bank.verifyAccount(name, stoi(accountNum))) {

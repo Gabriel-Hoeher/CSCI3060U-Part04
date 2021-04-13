@@ -61,3 +61,8 @@ Account::Account(float aBalance,string name,int aAccountNumber,
 float Account :: getBalance() {
     return this->balance;
 }
+
+//get active status
+bool Account :: getStatus() {
+    return this->isActive;
+}

@@ -23,25 +23,25 @@
 
 using namespace std;
 
-int main(void) {
-    //Continuously run the front end (implement a way to exit the sytem later)
-    while(true) {
-        //Prompt session type
-        string type;
-        cout << "Welcome to the bank system" << endl << "Choose a session type" 
-            << endl << "(Enter 0 for Admin | Enter 1 for Standard)" << endl;
-        getline(cin, type);
+int main(int argc, char* argv[]) {
+    //Prompt session type
+    string type = argv[1];
+    cout << "Welcome to the bank system" << endl << "Choose a session type" 
+        << endl << "(Enter 0 for Admin | Enter 1 for Standard)" << endl;
 
-        //Log in
+    //Log in
+    try { //handle invalid inputs for the entire program
         BankUser* session;
         if(stoi(type) == 0) {
-            session = new Admin();
+            session = new Admin(argc, argv);
         }
         else {
-            session = new Standard();
+            session = new Standard(argc, argv);
         }
         session->login();
         session->runSession();
+    } catch (const std::exception& ex) {
+        cout << "Invalid input" << endl;
     }
     return 0;
 }
