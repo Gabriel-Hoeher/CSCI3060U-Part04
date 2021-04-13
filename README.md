@@ -1,1 +1,5 @@
-# CSCI3060U-Part04
+# CSCI3060U-Project
+To run:\
+ -Open directory containing files in command line\
+ -Run make\
+ -Run a.out
