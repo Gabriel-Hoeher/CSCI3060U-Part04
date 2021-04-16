@@ -4,7 +4,7 @@ public class Main {
         String[] accountStrings;
         //Instantiate Read class to read from transaction files
         Read read = new Read();
-        accountStrings = read.readMaster("Master.txt");
+        accountStrings = read.readMaster("../../Master.txt");
 
         //Takes the strings create the account objects
         BankAccount[] accounts = new BankAccount[accountStrings.length];
